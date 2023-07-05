@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+int ComputeSteps(int x, int y)
+{
+    if (x == y)
+    {
+        return 0;       // Немає потреби в кроках, якщо x = y
+    } else if (y - x <= 2)
+    {
+        return y - x;   // Кількість кроків дорівнює різниці між x та y
+    } else
+    {
+        int steps = 2;    // Перші два кроки (x+1 та y-1)
+        int current = x + 2;  // Поточна позиція
+        while (current < y)
+        {
+            steps++;      // Збільшуємо лічильник кроків
+            current += steps % 2 == 0 ? steps : steps - 1;    // Обчислюємо наступну позицію
+        }
+        return steps;
+    }
+}
+
+int main()
+{
+    int x, y;
+    printf("Enter x: ");  // Введення данних
+    scanf("%d", &x);
+
+    printf("Enter y: ");
+    scanf("%d", &y);
+
+    if (x >= 0 && y >= 0 && x <= y && y < (1 << 31))   // Перевірка данних
+    {
+        printf("Invalid input data\n");
+        return 0;
+    }
+
+    int MinSteps = ComputeSteps(x, y); // Обчислюємо мінімальну кількість кроків
+    printf("\nMinimum number of steps %d\n", MinSteps);  // Виводимо результат
+    return 0;
+}
