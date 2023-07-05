@@ -1,0 +1,39 @@
+#include <stdio.h>
+int ncd(int a, int b)
+{
+    while (b != 0)
+    {
+        int temp = b;
+        b = a % b;      // Обчислення НСД двох чисел
+        a = temp;
+    }
+    return a;
+}
+
+int nck(int a, int b)
+{
+    return (a * b) / ncd(a, b);  // Обчислення НСК двох чисел
+}
+
+int main()
+{
+    int r;
+    printf("Enter the number of p :");
+    scanf("%d", &r);
+
+    int num[r];
+    printf("\nEnter %d integers separated by spaces: ", r);  // Збереження чисел в масиві
+    for (int i = 0; i < r; i++)
+    {
+        scanf("%d", &num[i]);
+    }
+    int result = num[0];
+
+    for (int i = 1; i < r; i++)
+    {
+        result = nck(result, num[i]);  // Обчислюється НСК
+    }
+
+    printf("\nThe least common multiple of the given numbers: %d\n", result);
+    return 0;
+}
