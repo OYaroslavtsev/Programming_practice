@@ -1,0 +1,20 @@
+#include <stdio.h>
+int main()
+{
+    int t1, t2, t3;
+    double total_speed, time_to_eat;
+
+    printf("Enter 3 values for the time for which the pie is eaten (in hours): \n");  // Ввід вхідних даних
+    scanf("%d %d %d",&t1,&t2,&t3);
+
+    double s1 = 1.0 / t1;
+    double s2 = 1.0 / t2; // Знаходимо значення (швидкості їжі за годину) кожного гостя
+    double s3 = 1.0 / t3;
+
+    total_speed = s1 + s2 + s3; // Обчислюємо загальну швидкість
+
+    time_to_eat = 1.0 / total_speed;  // Час, який потрібний, щоб з'їсти один пиріг
+
+    printf("Guests need %.2f hours to eat one pie.\n", time_to_eat);   // Виведення результату
+    return 0;
+}
